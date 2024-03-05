@@ -1,6 +1,6 @@
-import { ReactNode } from "react"
-import { Col, Navbar, Row } from "react-bootstrap"
-import { useTasksStatistic } from "../../hooks/useTasksStatistic.ts"
+import { ReactNode } from 'react'
+import { Col, Navbar, Row } from 'react-bootstrap'
+import { useTasksStatistic } from '../../hooks/use-tasks-statistic.ts'
 
 export const TaskStatistic = (): ReactNode => {
   const statistic = useTasksStatistic()

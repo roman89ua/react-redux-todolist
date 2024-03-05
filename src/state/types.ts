@@ -1,10 +1,10 @@
 export enum TasksFilters {
-  all = "All",
-  completed = "Completed",
-  notCompleted = "Not Completed",
+  all = 'All',
+  completed = 'Completed',
+  notCompleted = 'Not Completed',
 }
 
-export type TaskStatus = Omit<TasksFilters, "all">
+export type TaskStatus = Omit<TasksFilters, 'all'>
 
 export type Task = {
   id: string

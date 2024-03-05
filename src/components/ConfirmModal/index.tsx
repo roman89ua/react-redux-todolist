@@ -1,5 +1,5 @@
-import { Button, Modal } from "react-bootstrap"
-import { ReactNode } from "react"
+import { Button, Modal } from 'react-bootstrap'
+import { ReactNode } from 'react'
 
 type ModalData = {
   title: string
@@ -12,7 +12,7 @@ export type ConfirmModalProps = {
   modaldata: ModalData
 }
 export const ConfirmModal = (props: ConfirmModalProps): ReactNode => {
-  const { title, body } = props?.modaldata
+  const { title, body } = props.modaldata
 
   const confirmHandler = (): void => {
     props.confirm()

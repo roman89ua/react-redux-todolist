@@ -1,9 +1,9 @@
-import { ReactNode, useMemo } from "react"
-import { Button, ListGroup } from "react-bootstrap"
-import { Task, TasksFilters } from "../../state/tasks/types.ts"
-import { useDispatch, useSelector } from "react-redux"
-import { RootState } from "../../state/store.ts"
-import { statusUpdate } from "../../state/tasks/tasksSlice.ts"
+import { ReactNode, useMemo } from 'react'
+import { Button, ListGroup } from 'react-bootstrap'
+import { Task, TasksFilters } from '../../state/types.ts'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../state/store.ts'
+import { statusUpdate } from '../../state/tasks/tasks-slice.ts'
 
 type TaskListProps = {
   deleteHandler: (task: Task) => void
@@ -36,13 +36,15 @@ export const TasksList = ({ deleteHandler }: TaskListProps): ReactNode => {
                 className="d-flex justify-content-between"
                 action
                 onClick={() => onStatusChange(task.id)}
-                variant={`${task.status === TasksFilters.completed ? "success" : ""}`}
+                variant={`${task.status === TasksFilters
+                  .completed ? 'success' : ''}`}
               >
                 {task.title}
               </ListGroup.Item>
               <Button
                 variant="danger"
-                className="button-position z-1 my-2 rounded-circle py-1 px-2 pt-0 d-flex justify-content-center align-items-center"
+                className="button-position z-1 my-2 rounded-circle
+                py-1 px-2 pt-0 d-flex justify-content-center align-items-center"
                 onClick={() => deleteHandler(task)}
               >
                 x

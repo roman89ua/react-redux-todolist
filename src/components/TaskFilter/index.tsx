@@ -1,16 +1,16 @@
-import { TasksFilters } from "../../state/tasks/types.ts"
-import { ChangeEvent, ReactNode } from "react"
-import { filterChange } from "../../state/tasks/tasksSlice.ts"
-import { useDispatch, useSelector } from "react-redux"
-import { RootState } from "../../state/store.ts"
+import { TasksFilters } from '../../state/types.ts'
+import { ChangeEvent, ReactNode } from 'react'
+import { filterChange } from '../../state/tasks/tasks-slice.ts'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../state/store.ts'
 
 export const TasksFilter = (): ReactNode => {
   const currentFilter = useSelector((state: RootState) => state.tasks.filter)
 
   const dispatch = useDispatch()
 
-  const filterChangeHandler = (e: ChangeEvent<HTMLSelectElement>): void => {
-    dispatch(filterChange(e.target.value as TasksFilters))
+  const filterChangeHandler = (event: ChangeEvent<HTMLSelectElement>): void => {
+    dispatch(filterChange(event.target.value as TasksFilters))
   }
   return (
     <section title="tasks-filter" className="w-100">

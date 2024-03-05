@@ -3,6 +3,7 @@ module.exports = {
   env: { browser: true, es2020: true },
   extends: [
     "@wemake-services/typescript/recommended",
+    "@wemake-services/javascript"
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -12,5 +13,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "error"
   },
 }
