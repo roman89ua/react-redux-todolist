@@ -18,7 +18,7 @@ const INITIAL_TASK: Task = {
 const NoTaskFallback = (): ReactNode => {
   return (
     <section>
-      <h1 className="text-center">Sorry but no tasks are here.</h1>
+      <h1 className="text-center">Sorry, but there are no tasks here yet.</h1>
     </section>
   )
 }
