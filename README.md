@@ -28,3 +28,16 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+  ToDo list.
+
+Create a component that meets the requirements below.
+
+- Adding a new record.
+- A new record is added if its length is less than or equal to N characters.
+- Display a list of added records.
+- Switching the status of a record Completed / Not completed when clicking on its name.
+- Filtering by type (all, completed, current).
+- Display counter of completed and uncompleted tasks.
+- Use a storage (Redux).
+- For styling you can use any lib/framework, but remember UI matters.
+- Please use this linter https://github.com/wemake-services/wemake-frontend-styleguide.
