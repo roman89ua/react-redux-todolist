@@ -4,6 +4,7 @@ import { Task, TasksFilters } from '../../state/types.ts'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../state/store.ts'
 import { statusUpdate } from '../../state/tasks/tasks-slice.ts'
+import './styles.scss'
 
 type TaskListProps = {
   deleteHandler: (task: Task) => void
@@ -33,7 +34,7 @@ export const TasksList = ({ deleteHandler }: TaskListProps): ReactNode => {
           return (
             <article key={task.id} className="position-relative">
               <ListGroup.Item
-                className="d-flex justify-content-between"
+                className="d-inline text-truncate"
                 action
                 onClick={() => onStatusChange(task.id)}
                 variant={`${task.status === TasksFilters

@@ -13,7 +13,7 @@ export const TaskStatistic = (): ReactNode => {
           <p className="text-light m-0 d-flex flex-nowrap">Completed:</p>
         </Col>
         <Col xs={2}>
-          <p className="text-light m-0">{statistic.completed}</p>
+          <p className="text-light m-0 text-end">{statistic.completed}</p>
         </Col>
       </Row>
       <Row>
@@ -21,7 +21,7 @@ export const TaskStatistic = (): ReactNode => {
           <p className="text-light m-0 d-flex flex-nowrap">Not Completed:</p>
         </Col>
         <Col xs={2}>
-          <p className="text-light m-0">{statistic.notCompleted}</p>
+          <p className="text-light m-0 text-end">{statistic.notCompleted}</p>
         </Col>
       </Row>
     </section>

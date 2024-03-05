@@ -30,9 +30,19 @@ export const ConfirmModal = (props: ConfirmModalProps): ReactNode => {
         <Modal.Title id="contained-modal-title-vcenter">{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body className="text-center">{body}</Modal.Body>
-      <Modal.Footer>
-        <Button onClick={confirmHandler}>Confirm</Button>
-        <Button onClick={props.onHide}>Close</Button>
+      <Modal.Footer className='justify-content-center flex-column '>
+        <Button variant='danger'
+          className='w-100'
+          onClick={confirmHandler}
+        >
+            Confirm
+        </Button>
+        <Button
+          className='w-100'
+          onClick={props.onHide}
+        >
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   )

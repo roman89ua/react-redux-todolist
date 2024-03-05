@@ -8,7 +8,6 @@ import { deleteTask } from './state/tasks/tasks-slice.ts'
 import { ConfirmModal } from './components/ConfirmModal/index.tsx'
 import { MainNavbar } from './components/MainNavbar/index.tsx'
 import { TasksList } from './components/TasksList/index.tsx'
-import './app.scss'
 
 const INITIAL_TASK: Task = {
   'id': '',

@@ -15,6 +15,7 @@ const schema = yup
   .object({
     'newTask': yup
       .string()
+      .trim()
       .min(1, 'Task name is to short. It has to be at list 2 chars long.')
       .max(50, 'Task name is too long. It has to be less the 51 chars long')
       .required(),
