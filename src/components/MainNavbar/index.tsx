@@ -3,8 +3,11 @@ import { Container, Navbar } from 'react-bootstrap'
 import AddTaskForm from '../AddTaskForm'
 import { TasksFilter } from '../TaskFilter'
 import { TaskStatistic } from '../TaskStatistic'
+import { useTasksStatistic } from '../../hooks/use-tasks-statistic.ts'
 
 export const MainNavbar = (): ReactNode => {
+  const statistic = useTasksStatistic()
+
   return (
     <Navbar
       bg="primary"
@@ -19,7 +22,7 @@ export const MainNavbar = (): ReactNode => {
 
         <TasksFilter />
 
-        <TaskStatistic />
+        <TaskStatistic statistic={statistic} />
       </Container>
     </Navbar>
   )
