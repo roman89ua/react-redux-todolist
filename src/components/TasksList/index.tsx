@@ -10,11 +10,21 @@ type TaskListProps = {
   deleteHandler: (task: Task) => void
 }
 export const TasksList = memo(
-  ({ tasks, deleteHandler }: TaskListProps): ReactNode => {
+  ({ tasks = [], deleteHandler }: TaskListProps): ReactNode => {
     const dispatch = useDispatch()
 
     const onStatusChange = (id: string): void => {
       dispatch(statusUpdate({ id }))
+    }
+
+    if (tasks.length === 0) {
+      return (
+        <section>
+          <h1 className="text-center">
+            Sorry, but there are no tasks here yet.
+          </h1>
+        </section>
+      )
     }
 
     return (
@@ -43,7 +53,7 @@ export const TasksList = memo(
               </article>
             )
           })
-          .reverse()}
+        }
       </ListGroup>
     )
   },

@@ -1,26 +1,19 @@
-import { Container } from 'react-bootstrap'
-import { ReactNode, useMemo, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from './state/store.ts'
+import { ReactNode, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Task, TasksFilters } from './state/types.ts'
 
 import { deleteTask } from './state/tasks/tasks-slice.ts'
 import { ConfirmModal } from './components/ConfirmModal'
 import { MainNavbar } from './components/MainNavbar'
 import { TasksList } from './components/TasksList'
+import { TasksPagination } from './components/TasksPagination'
+import { Container } from 'react-bootstrap'
+import { useTasksWithPagination } from './hooks/use-tasks-with-pagination.ts'
 
 const INITIAL_TASK: Task = {
   'id': '',
   'title': '',
   'status': TasksFilters.notCompleted,
-}
-
-const NoTaskFallback = (): ReactNode => {
-  return (
-    <section>
-      <h1 className="text-center">Sorry, but there are no tasks here yet.</h1>
-    </section>
-  )
 }
 
 function App(): ReactNode {
@@ -32,9 +25,13 @@ function App(): ReactNode {
     'currentTask': INITIAL_TASK,
   })
 
-  const tasks = useSelector((state: RootState) => state.tasks.tasks)
-  const filter = useSelector((state: RootState) => state.tasks.filter)
+  const tasksOutput = useTasksWithPagination()
   const dispatch = useDispatch()
+
+  const [
+    active,
+    setActive,
+  ] = useState<number>(0)
 
   const onDelete = (id: string): void => {
     dispatch(deleteTask({ id }))
@@ -47,25 +44,22 @@ function App(): ReactNode {
     }))
   }
 
-  const tasksOutput = useMemo(() => {
-    if (filter !== TasksFilters.all) {
-      return tasks.filter((task) => task.status === filter)
-    }
-    return tasks
-  }, [tasks, filter])
-
-  const listContent = tasks.length > 0 ? <TasksList
-    tasks={tasksOutput}
-    deleteHandler={onConfirmModalToggle}
-  /> : <NoTaskFallback />
-
   return (
     <main>
       <MainNavbar />
 
       <Container>
-        {listContent}
+        <TasksList
+          tasks={tasksOutput[active]}
+          deleteHandler={onConfirmModalToggle}
+        />
       </Container>
+
+      <TasksPagination
+        active={active}
+        setActive={setActive}
+        tasksOutput={tasksOutput}
+      />
 
       <ConfirmModal
         show={confirmModal.show}
