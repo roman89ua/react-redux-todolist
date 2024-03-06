@@ -1,5 +1,5 @@
 import { Container } from 'react-bootstrap'
-import { ReactNode, useState } from 'react'
+import { ReactNode, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from './state/store.ts'
 import { Task, TasksFilters } from './state/types.ts'
@@ -33,6 +33,7 @@ function App(): ReactNode {
   })
 
   const tasks = useSelector((state: RootState) => state.tasks.tasks)
+  const filter = useSelector((state: RootState) => state.tasks.filter)
   const dispatch = useDispatch()
 
   const onDelete = (id: string): void => {
@@ -46,8 +47,17 @@ function App(): ReactNode {
     }))
   }
 
+  const tasksOutput = useMemo(() => {
+    if (filter !== TasksFilters.all) {
+      return tasks.filter((task) => task.status === filter)
+    }
+    return tasks
+  }, [tasks, filter])
+
   const listContent = tasks.length > 0 ? <TasksList
-    deleteHandler={onConfirmModalToggle} /> : <NoTaskFallback />
+    tasks={tasksOutput}
+    deleteHandler={onConfirmModalToggle}
+  /> : <NoTaskFallback />
 
   return (
     <main>
